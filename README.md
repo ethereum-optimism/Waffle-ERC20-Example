@@ -94,7 +94,7 @@ yarn test
 ```
 
 ## Troubleshooting
-Not working for you? It might help to check out this [easy to read Diff](https://i.imgur.com/rpy2HQU.png) to show you exactly which lines you should be altering. You can also check out the final working result that we have added to a seperate branch [here](https://github.com/ethereum-optimism/ERC20-Example/tree/final_result)
+Not working for you? It might help to check out this [easy to read Diff](https://i.imgur.com/DEU7wXC.png) to show you exactly which lines you should be altering. You can also check out the final working codebase that we have added to a seperate branch [here](https://github.com/ethereum-optimism/ERC20-Example/tree/final_result)
 
 Still not working? [Create a Github Issue](https://github.com/ethereum-optimism/ERC20-Example/issues), or hop in our Discord channel and ask away.
 
