@@ -1,11 +1,11 @@
 /*
-Implements EIP20 token standard: https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md
+Implements ERC20 token standard: https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md
 .*/
 
 
 pragma solidity ^0.5.16;
 
-contract EIP20{
+contract ERC20{
 
     uint256 constant private MAX_UINT256 = 2**256 - 1;
     mapping (address => uint256) public balances;
