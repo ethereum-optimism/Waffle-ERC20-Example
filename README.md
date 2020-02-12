@@ -51,7 +51,7 @@ First, we need to configure ``ethereum-waffle`` (which is an alternative to `tru
 }
 ```
 ## Using the Full Node
-To use the OVM to run our tests, open the test file at ``test/eip20.spec.js``. We can import the OVM-ified versions of `getWallets`, `createMockProvider`, and `deployContract` near the top of the test file:
+To use the OVM to run our tests, open the test file at ``test/erc20.spec.js``. We can import the OVM-ified versions of `getWallets`, `createMockProvider`, and `deployContract` near the top of the test file:
 
 ```javascript=
 const { createMockProvider, getWallets, deployContract } = require('@eth-optimism/rollup-full-node')
@@ -69,7 +69,7 @@ Our imports at the top of the file should now look like:
 const {use, expect} = require('chai');
 const {solidity} = require('ethereum-waffle');
 const {createMockProvider, getWallets, deployContract } = require('@eth-optimism/rollup-full-node')
-const EIP20 = require('../build/EIP20.json');
+const ERC20 = require('../build/ERC20.json');
 ```
 
 
@@ -77,13 +77,10 @@ We're almost there!  After we've run our tests on the OVM, we need to stop our O
 
 ```javascript=
   before(async () => {
-    provider = await createMockProvider()
-    const wallets = getWallets(provider)
-    wallet = wallets[0]
-    walletTo = wallets[1]
+    ...
   })
 
-  //ADD TO SUPPORT OVM
+  //ADD THIS
   after(() => {provider.closeOVM()}) 
 ```
 ## Running the New Tests
@@ -92,5 +89,11 @@ Great, we're ready to go!  Now you can try to re-run your tests on top of the OV
 ```bash
 yarn test
 ```
+
 ## Wasn't that easy?
-The OVM provides a fresh new take on layer 2 development: it's identical to layer 1 development.  No hoops, no tricks--the Ethereum you know and love, ready to scale up with L2.  For more info on our progress and what's going on behind the scenes, you can follow us on [twitter](https://twitter.com/optimismPBC) and [check out our docs](https://docs.optimism.io)!
+The OVM provides a fresh new take on layer 2 development: it's identical to layer 1 development.  No hoops, no tricks--the Ethereum you know and love, ready to scale up with L2.  For more info on our progress and what's going on behind the scenes, you can follow us on [Twitter](https://twitter.com/optimismPBC) and [check out our docs](https://docs.optimism.io)!
+
+## Troubleshooting
+Not working for you? It might help to check out this [easy to read Diff](https://i.imgur.com/DEU7wXC.png) to show you exactly which lines you should be altering. You can also check out the final working codebase that we have added to a seperate branch [here](https://github.com/ethereum-optimism/ERC20-Example/tree/final_result)
+
+Still not working? [Create a Github Issue](https://github.com/ethereum-optimism/ERC20-Example/issues), or hop in our [Discord](https://discordapp.com/invite/jrnFEvq) channel and ask away.
