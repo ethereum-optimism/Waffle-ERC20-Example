@@ -51,7 +51,7 @@ First, we need to configure ``ethereum-waffle`` (which is an alternative to `tru
 }
 ```
 ## Using the Full Node
-To use the OVM to run our tests, open the test file at ``test/eip20.spec.js``. We can import the OVM-ified versions of `getWallets`, `createMockProvider`, and `deployContract` near the top of the test file:
+To use the OVM to run our tests, open the test file at ``test/erc20.spec.js``. We can import the OVM-ified versions of `getWallets`, `createMockProvider`, and `deployContract` near the top of the test file:
 
 ```javascript=
 const { createMockProvider, getWallets, deployContract } = require('@eth-optimism/rollup-full-node')
@@ -69,7 +69,7 @@ Our imports at the top of the file should now look like:
 const {use, expect} = require('chai');
 const {solidity} = require('ethereum-waffle');
 const {createMockProvider, getWallets, deployContract } = require('@eth-optimism/rollup-full-node')
-const EIP20 = require('../build/EIP20.json');
+const ERC20 = require('../build/ERC20.json');
 ```
 
 
