@@ -1,6 +1,8 @@
 const {use, expect} = require('chai');
-const {solidity, createMockProvider, deployContract, getWallets} = require('ethereum-waffle');
+const {solidity} = require('ethereum-waffle');
 const EIP20 = require('../build/EIP20.json');
+//ADD TO SUPPORT OVM
+const {createMockProvider, getWallets, deployContract } = require('@eth-optimism/rollup-full-node')
 
 use(solidity);
 
@@ -14,6 +16,9 @@ describe('ERC20 smart contract', () => {
     wallet = wallets[0]
     walletTo = wallets[1]
   })
+
+  //ADD TO SUPPORT OVM
+  after(() => {provider.closeOVM()}) 
 
   // parameters to use for our test coin
   const COIN_NAME = 'OVM Test Coin'
@@ -50,4 +55,3 @@ describe('ERC20 smart contract', () => {
     expect(walletFromBalance.toNumber()).to.equal(0);
   });
 });
-

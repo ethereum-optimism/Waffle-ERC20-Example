@@ -2,12 +2,12 @@
 # yarn lockfile v1
 
 
-"@eth-optimism/core-db@0.0.1-alpha.2":
-  version "0.0.1-alpha.2"
-  resolved "https://registry.yarnpkg.com/@eth-optimism/core-db/-/core-db-0.0.1-alpha.2.tgz#207f925f8d1e846b4e6898b778c91fb2fc27d1aa"
-  integrity sha512-6mLovOUPY0rLuLKPBj8YfBYC3Dy02iXgPAMzu/gh4JV82XollkFtoD2mYHLAmaTEqGSv97Vxd1uiUKCEbjYqyA==
+"@eth-optimism/core-db@0.0.1-alpha.8":
+  version "0.0.1-alpha.8"
+  resolved "https://registry.yarnpkg.com/@eth-optimism/core-db/-/core-db-0.0.1-alpha.8.tgz#7f38f11b495853d02e0a8cab50ff76cb17fbd409"
+  integrity sha512-rR+EtW/zcjNL8TxN3wTc+jEgk5IsymZKhQ+CVWuc569ht0tlXKZ6ByS4CWWcrWEgu9qOHvJTYu+1MMw8kb9wBQ==
   dependencies:
-    "@eth-optimism/core-utils" "0.0.1-alpha.2"
+    "@eth-optimism/core-utils" "0.0.1-alpha.8"
     abstract-leveldown "^6.2.2"
     async-lock "^1.2.2"
     chai "^4.2.0"
@@ -17,10 +17,10 @@
     level "^6.0.0"
     memdown "^4.0.0"
 
-"@eth-optimism/core-utils@0.0.1-alpha.2":
-  version "0.0.1-alpha.2"
-  resolved "https://registry.yarnpkg.com/@eth-optimism/core-utils/-/core-utils-0.0.1-alpha.2.tgz#a2ca7b8aa89532abb182273436487651e52342fd"
-  integrity sha512-0B9Iz50h8fZZTw1+oKYk9YFZsJcMQyTyPL8G+DbUB+a98xghvRX9HlAsUZuxeNMEoOVFdamLOFcQMK/izMgPxg==
+"@eth-optimism/core-utils@0.0.1-alpha.8":
+  version "0.0.1-alpha.8"
+  resolved "https://registry.yarnpkg.com/@eth-optimism/core-utils/-/core-utils-0.0.1-alpha.8.tgz#54965ec9c4c1eecbf49cb074da9e2d8b20dad9ae"
+  integrity sha512-DKYjj4sde6B3wtNTfME0XelvUz0mvqjilzPiooNg2+NMTufHIHr+TEQhwdI5kHHTBlozIeLg7l8uK0iJnkIOcQ==
   dependencies:
     abstract-leveldown "^6.2.2"
     async-lock "^1.2.2"
@@ -37,14 +37,14 @@
     ts-md5 "^1.2.4"
     uuid "^3.3.3"
 
-"@eth-optimism/ovm@0.0.1-alpha.2":
-  version "0.0.1-alpha.2"
-  resolved "https://registry.yarnpkg.com/@eth-optimism/ovm/-/ovm-0.0.1-alpha.2.tgz#4781a67a6ad5002e9102852b88379198347bd0f8"
-  integrity sha512-hBCKS0hE/20PYOAQUqtFGgYggs7XXMnUz0DaroGl0IpDSqh5b7ipJaofJdA5x6l00NHQVL2zNA4BzqMnTFRArw==
+"@eth-optimism/ovm@0.0.1-alpha.8":
+  version "0.0.1-alpha.8"
+  resolved "https://registry.yarnpkg.com/@eth-optimism/ovm/-/ovm-0.0.1-alpha.8.tgz#14e8f6af3adcf83f908a286ed2385178de600c3b"
+  integrity sha512-DAGVmC+CqpK5weqcgDVOMKCVK4FF3mbZp4zhykcRj6VrRAuJMk/MQ6uGrVig5zXagKkNR+WdmgfJrTJs8HRoGQ==
   dependencies:
-    "@eth-optimism/core-db" "0.0.1-alpha.2"
-    "@eth-optimism/core-utils" "0.0.1-alpha.2"
-    "@eth-optimism/rollup-core" "0.0.1-alpha.2"
+    "@eth-optimism/core-db" "0.0.1-alpha.8"
+    "@eth-optimism/core-utils" "0.0.1-alpha.8"
+    "@eth-optimism/rollup-core" "0.0.1-alpha.8"
     "@types/sinon-chai" "^3.2.2"
     chai "^4.2.0"
     ethereum-waffle "2.1.0"
@@ -53,23 +53,23 @@
     merkletreejs "^0.1.7"
     openzeppelin-solidity "^2.2.0"
 
-"@eth-optimism/rollup-core@0.0.1-alpha.2":
-  version "0.0.1-alpha.2"
-  resolved "https://registry.yarnpkg.com/@eth-optimism/rollup-core/-/rollup-core-0.0.1-alpha.2.tgz#f2baecf4e7402c51ca0f76fe4c05a852ae2a13a6"
-  integrity sha512-X55091nRsKnkBZYy0Q+XHYDFcE2Yno24IdEVZf4XBzLHf1OJZpacFj8QXDRi+ufpkZ1H7FbseKHzegF7QJKd6g==
+"@eth-optimism/rollup-core@0.0.1-alpha.8":
+  version "0.0.1-alpha.8"
+  resolved "https://registry.yarnpkg.com/@eth-optimism/rollup-core/-/rollup-core-0.0.1-alpha.8.tgz#591793246f2c057e5a7ddd316c0764c397f566c0"
+  integrity sha512-+4Rr4NzWo36SHaX5214AvuaDs+qdoKKxPwjlI32u8bMxe9o+Lc6bfKlE/40P6IBc5cbqU5FTZiFJRxIw5daSEA==
   dependencies:
-    "@eth-optimism/core-db" "0.0.1-alpha.2"
-    "@eth-optimism/core-utils" "0.0.1-alpha.2"
+    "@eth-optimism/core-db" "0.0.1-alpha.8"
+    "@eth-optimism/core-utils" "0.0.1-alpha.8"
     async-lock "^1.2.2"
     ethers "^4.0.39"
 
-"@eth-optimism/rollup-dev-tools@0.0.1-alpha.2":
-  version "0.0.1-alpha.2"
-  resolved "https://registry.yarnpkg.com/@eth-optimism/rollup-dev-tools/-/rollup-dev-tools-0.0.1-alpha.2.tgz#8bf49fee70e3e70f26caf105b9f86cc06d054915"
-  integrity sha512-0CPlg36XfGx4l/GsNkk5Q0sPsFg/jrwIHtlh6Z28z7H03LnKjf/yeixBt8izI3/3Fzq84jfbQ1WjYaICKtGh4A==
+"@eth-optimism/rollup-dev-tools@0.0.1-alpha.8":
+  version "0.0.1-alpha.8"
+  resolved "https://registry.yarnpkg.com/@eth-optimism/rollup-dev-tools/-/rollup-dev-tools-0.0.1-alpha.8.tgz#9b008604a8a71c37b521d39c9d405ed9096b5d0d"
+  integrity sha512-CXRphOy6dI9In/J8ZQVI95qogBY615H/yLnSr67sbyeJIJ+w6fj75lVr5j3MWrHYcKRD21imqdmqM2TmPR3oOQ==
   dependencies:
-    "@eth-optimism/core-utils" "0.0.1-alpha.2"
-    "@eth-optimism/rollup-core" "0.0.1-alpha.2"
+    "@eth-optimism/core-utils" "0.0.1-alpha.8"
+    "@eth-optimism/rollup-core" "0.0.1-alpha.8"
     async-lock "^1.2.2"
     bn.js "^5.1.1"
     dotenv "^8.2.0"
@@ -78,15 +78,15 @@
     ethereumjs-vm "^4.1.3"
     ethers "^4.0.42"
 
-"@eth-optimism/rollup-full-node@^0.0.1-alpha.2":
-  version "0.0.1-alpha.2"
-  resolved "https://registry.yarnpkg.com/@eth-optimism/rollup-full-node/-/rollup-full-node-0.0.1-alpha.2.tgz#f35a986067f083b7548cfbaf3eb98adf04b2013a"
-  integrity sha512-dsnxmzhJKIX4KsdsxDtj2ya8ixjPd1Wi8Byu7HIGBNV/8hTVhUTXX3a+0zooaUNGK4+7kW8rFyFlbCopsyfRag==
+"@eth-optimism/rollup-full-node@^0.0.1-alpha.8":
+  version "0.0.1-alpha.8"
+  resolved "https://registry.yarnpkg.com/@eth-optimism/rollup-full-node/-/rollup-full-node-0.0.1-alpha.8.tgz#dbe6e57480844b01fd9ab7b6b077b8059c74c96d"
+  integrity sha512-fJWC05qt13cqCo4VkA8/8SpcgvADnAGOZGcyyYGxnAvTNzXRvBFeTMW5woZl5UX8FLOyHPyLUewY0/mVBeQ3BA==
   dependencies:
-    "@eth-optimism/core-db" "0.0.1-alpha.2"
-    "@eth-optimism/core-utils" "0.0.1-alpha.2"
-    "@eth-optimism/ovm" "0.0.1-alpha.2"
-    "@eth-optimism/rollup-core" "0.0.1-alpha.2"
+    "@eth-optimism/core-db" "0.0.1-alpha.8"
+    "@eth-optimism/core-utils" "0.0.1-alpha.8"
+    "@eth-optimism/ovm" "0.0.1-alpha.8"
+    "@eth-optimism/rollup-core" "0.0.1-alpha.8"
     async-lock "^1.2.2"
     axios "^0.19.0"
     cors "^2.8.5"
@@ -95,13 +95,13 @@
     ethers "^4.0.39"
     fastpriorityqueue "^0.6.3"
 
-"@eth-optimism/solc-transpiler@0.0.1-alpha.2":
-  version "0.0.1-alpha.2"
-  resolved "https://registry.yarnpkg.com/@eth-optimism/solc-transpiler/-/solc-transpiler-0.0.1-alpha.2.tgz#b1aa86c23b5b2fecd750b751f51f4dfa99947bc2"
-  integrity sha512-mqWxF9nmtets1NGUtT15WQpvs2Sul6X51eG4nRM4fFxGc6afsvk8445hi0yTJ9YmqbIsjxmUTzPydJUraxE0qw==
+"@eth-optimism/solc-transpiler@0.0.1-alpha.8":
+  version "0.0.1-alpha.8"
+  resolved "https://registry.yarnpkg.com/@eth-optimism/solc-transpiler/-/solc-transpiler-0.0.1-alpha.8.tgz#a3d92603fb751fe36578fa2ae3d4a8f26c0cdb5e"
+  integrity sha512-HC1lPvp+ixgGZRZUN5ySCWmaZMZyakHG2nHekC27tBs5v/TJkwYT3UK0qKTk/W4GBTlr4kv4KN8tViV3ZcZOCw==
   dependencies:
-    "@eth-optimism/core-utils" "0.0.1-alpha.2"
-    "@eth-optimism/rollup-dev-tools" "0.0.1-alpha.2"
+    "@eth-optimism/core-utils" "0.0.1-alpha.8"
+    "@eth-optimism/rollup-dev-tools" "0.0.1-alpha.8"
     solc "^0.5.12"
 
 "@ethereum-waffle/chai@^2.3.0":
