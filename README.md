@@ -86,6 +86,12 @@ We're almost there!  After we've run our tests on the OVM, we need to stop our O
   //ADD TO SUPPORT OVM
   after(() => {provider.closeOVM()}) 
 ```
+
+## Double Checking!
+Altogether, the only changes made to the files should look as follows:
+![](https://i.imgur.com/rpy2HQU.png)
+
+
 ## Running the New Tests
 Great, we're ready to go!  Now you can try to re-run your tests on top of the OVM with
 
@@ -94,9 +100,7 @@ yarn test
 ```
 
 ## Troubleshooting
-Not working for you? It might help to check out this [easy to read Diff](https://i.imgur.com/rpy2HQU.png) to show you exactly which lines you should be altering. 
-
-Still not working? [Create a Github Issue](https://github.com/ethereum-optimism/ERC20-Example/issues), or hop in our [Discord](https://discordapp.com/invite/jrnFEvq) channel and ask away.
+Not working for you?  [Create a Github Issue](https://github.com/ethereum-optimism/ERC20-Example/issues), or hop in our [Discord](https://discordapp.com/invite/jrnFEvq) channel and ask away.
 
 ## Wasn't that easy?
 The OVM provides a fresh new take on layer 2 development: it's identical to layer 1 development.  No hoops, no tricks--the Ethereum you know and love, ready to scale up with L2.  For more info on our progress and what's going on behind the scenes, you can follow us on [Twitter](https://twitter.com/optimismPBC) and [check out our docs](https://docs.optimism.io)!
