@@ -1,5 +1,6 @@
 {
   "sourcesPath": "./contracts",
   "targetPath": "./build",
-  "npmPath": "./node_modules"
+  "npmPath": "./node_modules",
+  "compilerVersion": "0.5.16"
 }
