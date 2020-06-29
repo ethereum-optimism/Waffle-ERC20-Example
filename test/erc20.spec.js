@@ -1,5 +1,6 @@
 const { use, expect } = require('chai');
-const { solidity, MockProvider, deployContract } = require('ethereum-waffle');
+const { solidity, deployContract } = require('ethereum-waffle');
+const { getProvider } = require('./setup')
 const ERC20 = require('../build/ERC20.json');
 
 use(solidity);
@@ -9,7 +10,7 @@ describe('ERC20 smart contract', () => {
   let wallet, walletTo
 
   before(async () => {
-    provider = new MockProvider()
+    provider = await getProvider()
     const wallets = provider.getWallets()
     wallet = wallets[0]
     walletTo = wallets[1]
@@ -61,16 +62,6 @@ describe('ERC20 smart contract', () => {
     const tokenFromOtherWallet = token.connect(walletTo);
     await expect(tokenFromOtherWallet.transfer(wallet.address, 1))
       .to.be.reverted;
-  });
-
-  it('Calls totalSupply on BasicToken contract', async () => {
-    await token.totalSupply();
-    expect('totalSupply').to.be.calledOnContract(token);
-  });
-
-  it('Calls balanceOf with sender address on BasicToken contract', async () => {
-    await token.balanceOf(wallet.address);
-    expect('balanceOf').to.be.calledOnContractWith(token, [wallet.address]);
   });
 });
 
