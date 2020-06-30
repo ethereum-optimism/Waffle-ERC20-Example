@@ -1,7 +1,7 @@
 {
   "name": "@eth-optimism/ERC20-Example",
-  "version": "0.0.1-alpha.0",
-  "description": "Basic example of how to test a basic token contract in the OVM",
+  "version": "0.0.1-alpha.1",
+  "description": "Basic example of how to test a basic token contract with Waffle in the OVM",
   "scripts": {
     "clean": "rimraf build",
     "build:evm": "mkdir -p build && waffle waffle-config.json",
