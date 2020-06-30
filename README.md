@@ -1,4 +1,4 @@
-# Getting Started with the OVM: Simple ERC20 Token Tutorial
+# Getting Started with the OVM: Simple ERC20 Token Waffle Tutorial
 
 Hi there! Welcome to our OVM ERC20 Waffle tutorial.
 
