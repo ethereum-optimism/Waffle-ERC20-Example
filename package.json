@@ -8,7 +8,7 @@
     "test:evm": "yarn build:evm && MODE=EVM mocha 'test/*.spec.js' --timeout 10000",
     "all:evm": "yarn clean && yarn test:evm",
     "build:ovm": "mkdir -p build && DEBUG=info*,error*,warn* waffle waffle-ovm-config.json",
-    "test:ovm": "yarn build:ovm && MODE=OVM DEBUG=info*,error*,warn* mocha 'test/*.spec.js' --timeout 10000",
+    "test:ovm": "yarn build:ovm && MODE=OVM DEBUG=info*,warn* mocha 'test/*.spec.js' --timeout 50000",
     "all:ovm": "yarn clean && yarn test:ovm"
   },
   "keywords": [
@@ -30,8 +30,8 @@
     "url": "https://github.com/ethereum-optimism/ERC20-Example.git"
   },
   "devDependencies": {
-    "@eth-optimism/rollup-full-node": "latest",
-    "@eth-optimism/solc-transpiler": "latest",
+    "@eth-optimism/rollup-full-node": "^0.0.1-alpha.28",
+    "@eth-optimism/solc-transpiler": "^0.0.1-alpha.27",
     "ethereum-waffle": "2.5.0",
     "solc": "0.5.16",
     "mocha": "^7.0.1",
