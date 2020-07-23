@@ -4,6 +4,11 @@ Hi there! Welcome to our OVM ERC20 Waffle tutorial.
 
 If your preferred smart contract testing framework is Truffle, see our OVM ERC20 Truffle tutorial here (todo). If you're interested in writing your first L2-compatible smart contract using Waffle as your smart contract testing framework, then you've come to the right place!  This repo serves as an example for how to test running your contracts in the EVM and OVM and how to uncover OVM bugs for the Optimism team to fix.
 
+### Prerequisites
+```
+node v11.10.1
+```
+
 ## Set up
 
 To start out, clone this example repo
