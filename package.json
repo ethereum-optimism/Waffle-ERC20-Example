@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "@eth-optimism/rollup-full-node": "^0.0.1-alpha.28",
-    "@eth-optimism/solc": "0.5.16-alpha.0",
+    "@eth-optimism/solc": "0.5.16-alpha.6",
     "ethereum-waffle": "2.5.0",
     "solc": "0.5.16",
     "mocha": "^7.0.1",
