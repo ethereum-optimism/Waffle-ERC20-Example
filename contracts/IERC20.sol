@@ -4,6 +4,12 @@ pragma solidity ^0.5.16;
 
 
 contract IERC20 {
+    function initialize(
+        uint256 _initialAmount,
+        string calldata _tokenName,
+        uint8 _decimalUnits,
+        string calldata _tokenSymbol
+    ) external;
     /* This is a slight change to the ERC20 base standard.
     function totalSupply() constant returns (uint256 supply);
     is replaced with:
@@ -14,7 +20,7 @@ contract IERC20 {
     function by the compiler.
     */
     /// total amount of tokens
-      function totalSupply() external view returns (uint256);
+    function totalSupply() external view returns (uint256);
 
     /// @param _owner The address from which the balance will be retrieved
     /// @return The balance

@@ -24,11 +24,18 @@ describe('ERC20 smart contract', () => {
 
   /* Deploy a new ERC20 Token before each test */
   beforeEach(async () => {
-    token = await deployContract(wallet, ERC20, [1000, COIN_NAME, NUM_DECIMALS, TICKER])
+    token = await deployContract(wallet, ERC20, [])
+    const init = await token.initialize(1000, COIN_NAME, NUM_DECIMALS, TICKER)
+    await init.wait()
   })
 
   it('Assigns initial balance', async () => {
     expect(await token.balanceOf(wallet.address)).to.equal(1000);
+  });
+
+  it('Cannot be initialized more than once', async () => {
+    await expect(token.initialize(1000, COIN_NAME, NUM_DECIMALS, TICKER))
+      .to.be.reverted;
   });
 
   it('Correctly sets vanity information', async () => {
@@ -41,7 +48,6 @@ describe('ERC20 smart contract', () => {
     const symbol = await token.symbol();
     expect(symbol).to.equal(TICKER);
   });
-
 
   it('Transfer adds amount to destination account', async () => {
     await token.transfer(walletTo.address, 7);
