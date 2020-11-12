@@ -112,10 +112,10 @@
     rimraf "^2.6.3"
     web3 "^1.2.7"
 
-"@eth-optimism/solc@0.5.16-alpha.0":
-  version "0.5.16-alpha.0"
-  resolved "https://registry.yarnpkg.com/@eth-optimism/solc/-/solc-0.5.16-alpha.0.tgz#27df0e8db3f4d1118bf18882460115c79d6dc6c5"
-  integrity sha512-jAgrdWSKGZTmNIsHht4mudcouptM/m0T6p7pdxnHhN39qS160LXxZQKGATk8Vnx1NJPHpJXvfwQcYbEhhrIJ2A==
+"@eth-optimism/solc@0.5.16-alpha.6":
+  version "0.5.16-alpha.6"
+  resolved "https://registry.yarnpkg.com/@eth-optimism/solc/-/solc-0.5.16-alpha.6.tgz#117472df54d90a2ff645119a95598f1b3f341636"
+  integrity sha512-2Ku6pl3ZOyAaYft/h2/l2SUH+Jn5D+ZwQHQCDpPGpSdmXVgKUKCIGENuLbeHOr37Amum+bcKubcxairGXedEjg==
   dependencies:
     command-exists "^1.2.8"
     commander "3.0.2"
