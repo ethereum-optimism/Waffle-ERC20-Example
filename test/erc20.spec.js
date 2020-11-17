@@ -1,6 +1,8 @@
 const { use, expect } = require('chai');
 const { solidity, deployContract } = require('ethereum-waffle');
-const { getProvider } = require('./setup')
+const { MockProvider } = (process.env.MODE === 'OVM') ?
+  require('@eth-optimism/ovm-toolchain/build/src/waffle/waffle-v2') :
+  require('ethereum-waffle');
 const ERC20 = require('../build/ERC20.json');
 
 use(solidity);
@@ -10,7 +12,7 @@ describe('ERC20 smart contract', () => {
   let wallet, walletTo
 
   before(async () => {
-    provider = await getProvider()
+    provider = new MockProvider()
     const wallets = provider.getWallets()
     wallet = wallets[0]
     walletTo = wallets[1]
