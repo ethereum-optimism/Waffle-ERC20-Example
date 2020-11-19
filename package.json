@@ -30,8 +30,8 @@
     "url": "https://github.com/ethereum-optimism/ERC20-Example.git"
   },
   "devDependencies": {
-    "@eth-optimism/rollup-full-node": "^0.0.1-alpha.28",
-    "@eth-optimism/solc": "0.5.16-alpha.0",
+    "@eth-optimism/ovm-toolchain": "^0.0.1-alpha.14",
+    "@eth-optimism/solc": "^0.5.16-alpha.6",
     "ethereum-waffle": "2.5.0",
     "solc": "0.5.16",
     "mocha": "^7.0.1",
