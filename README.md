@@ -6,7 +6,7 @@ If your preferred smart contract testing framework is Truffle, see our OVM ERC20
 
 ### Prerequisites
 ```
-node v11.10.1
+node v10.23.1
 ```
 
 ## Set up
