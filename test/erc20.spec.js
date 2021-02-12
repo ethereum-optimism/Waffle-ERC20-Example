@@ -1,9 +1,10 @@
 const { use, expect } = require('chai');
 const { solidity, deployContract } = require('ethereum-waffle');
-const { MockProvider } = (process.env.MODE === 'OVM') ?
+const { MockProvider } = (process.env.TEST_MODE === 'OVM') ?
   require('@eth-optimism/plugins/waffle') :
   require('ethereum-waffle');
-const ERC20 = require('../build/ERC20.json');
+const buildFolder = (process.env.TEST_MODE === 'OVM') ? 'build-ovm' : 'build';
+const ERC20 =  require(`../${buildFolder}/ERC20.json`);
 
 use(solidity);
 
