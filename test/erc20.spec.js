@@ -1,7 +1,7 @@
 const { use, expect } = require('chai');
 const { solidity, deployContract } = require('ethereum-waffle');
 const { MockProvider } = (process.env.MODE === 'OVM') ?
-  require('@eth-optimism/ovm-toolchain/build/src/waffle/waffle-v2') :
+  require('@eth-optimism/plugins/waffle') :
   require('ethereum-waffle');
 const ERC20 = require('../build/ERC20.json');
 

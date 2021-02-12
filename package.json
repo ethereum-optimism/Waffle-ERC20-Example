@@ -30,9 +30,9 @@
     "url": "https://github.com/ethereum-optimism/ERC20-Example.git"
   },
   "devDependencies": {
-    "@eth-optimism/ovm-toolchain": "^0.0.1-alpha.14",
-    "@eth-optimism/solc": "^0.5.16-alpha.6",
-    "ethereum-waffle": "2.5.0",
+    "@eth-optimism/plugins": "^0.0.12",
+    "@eth-optimism/solc": "^0.5.16-alpha.7",
+    "ethereum-waffle": "^3.0.0",
     "solc": "0.5.16",
     "mocha": "^7.0.1",
     "rimraf": "^2.6.3"
