@@ -2,20 +2,21 @@
 import { expect, use } from 'chai'
 import { ethers, Wallet, Signer } from 'ethers'
 import { JsonRpcProvider } from '@ethersproject/providers'
-import { solidity, deployContract } from 'ethereum-waffle'
+import { BigNumber } from '@ethersproject/bignumber'
+import { solidity } from 'ethereum-waffle'
 import 'dotenv/config'
 
 /* Internal imports */
 import { ERC20 } from '../types'
-const buildFolder = (process.env.TEST_MODE === 'OVM') ? 'build-ovm' : 'build'
-const ERC20Aritfact = require(`../${ buildFolder }/ERC20.json`)
+import { getArtifact } from './utils'
 
 use(solidity)
 
-
-describe('ERC20 smart contract', () => {
-  let ERC20: any,
-    provider: JsonRpcProvider
+describe('ERC20', () => {
+  let ERC20: ERC20,
+    provider: JsonRpcProvider,
+    walletAddress: string,
+    walletToAddress: string
 
   const privateKey: string = ethers.Wallet.createRandom().privateKey
   const useL2: boolean = (process.env.TEST_MODE === 'OVM')
@@ -34,46 +35,64 @@ describe('ERC20 smart contract', () => {
   const TICKER = 'OVM'
   const NUM_DECIMALS = 1
 
-  /* Deploy a new ERC20 Token  */
-  before(async () => {
-    ERC20 = await deployContract(wallet, ERC20Aritfact, [1000, COIN_NAME, NUM_DECIMALS, TICKER]) as ERC20
-  })
+  describe('when using a deployed contract instance', () => {
+    before(async () => {
+      walletAddress = await wallet.getAddress()
+      walletToAddress = await walletTo.getAddress()
 
-  it('Assigns initial balance', async () => {
-    expect(await ERC20.balanceOf(wallet.getAddress())).to.equal(1000)
-  })
+      const ERC20_Artifact = getArtifact(process.env.TEST_MODE)
+      const ERC20_Factory = new ethers.ContractFactory(
+        ERC20_Artifact.abi,
+        ERC20_Artifact.bytecode,
+        wallet
+      )
 
-  it('Correctly sets vanity information', async () => {
-    const name = await ERC20.name()
-    expect(name).to.equal(COIN_NAME)
+      ERC20 = await ERC20_Factory
+        .connect(wallet)
+        .deploy(1000, COIN_NAME, NUM_DECIMALS, TICKER) as ERC20
 
-    const decimals = await ERC20.decimals()
-    expect(decimals).to.equal(NUM_DECIMALS)
+      ERC20.deployTransaction.wait()
+    })
 
-    const symbol = await ERC20.symbol()
-    expect(symbol).to.equal(TICKER)
-  })
+    it('should assign initial balance', async () => {
+      const initialBalance = await ERC20.balanceOf(walletAddress)
+      expect(initialBalance).to.equal(1000)
+    })
 
+    it('should correctly set vanity information', async () => {
+      const name = await ERC20.name()
+      const decimals = await ERC20.decimals()
+      const symbol = await ERC20.symbol()
 
-  it('Transfer adds amount to destination account', async () => {
-    await ERC20.transfer(walletTo.getAddress(), 7)
-    expect(await ERC20.balanceOf(walletTo.getAddress())).to.equal(7)
-  })
+      expect(name).to.equal(COIN_NAME)
+      expect(decimals).to.equal(NUM_DECIMALS)
+      expect(symbol).to.equal(TICKER)
+    })
 
-  it('Transfer emits event', async () => {
-    await expect(ERC20.transfer(walletTo.getAddress(), 7))
-      .to.emit(ERC20, 'Transfer')
-      .withArgs(wallet.getAddress(), walletTo.getAddress(), 7)
-  })
+    it('should call transfer to add amount to destination account', async () => {
+      await ERC20.connect(wallet).transfer(walletToAddress, 7)
+      const walletToBalance: BigNumber = await ERC20.balanceOf(walletToAddress)
+      expect(walletToBalance.toString()).to.equal('7')
+    })
 
-  it('Can not transfer above the amount', async () => {
-    await expect(ERC20.transfer(walletTo.getAddress(), 1007)).to.be.reverted
-  })
+    // Compare with how Synthetix tests event emissions
+    it('should emit a Transfer event when transfer is called', async () => {
+      const tx = ERC20.connect(wallet).transfer(walletToAddress, 7)
+      await expect(tx)
+        .to.emit(ERC20, 'Transfer')
+        .withArgs(walletAddress, walletToAddress, 7)
+    })
 
-  it('Can not transfer from empty account', async () => {
-    const ERC20FromOtherWallet = ERC20.connect(walletTo)
-    await expect(ERC20FromOtherWallet.transfer(wallet.getAddress(), 1))
-      .to.be.reverted
+    it('should not transfer above the amount', async () => {
+      const tx = ERC20.connect(wallet).transfer(walletToAddress, 1007)
+      await expect(tx).to.be.reverted
+    })
+
+    it('should not transfer from empty account', async () => {
+      const ERC20FromOtherWallet = ERC20.connect(walletTo)
+      const tx = ERC20FromOtherWallet.transfer(walletAddress, 1)
+
+      await expect(tx).to.be.reverted
+    })
   })
 })
-

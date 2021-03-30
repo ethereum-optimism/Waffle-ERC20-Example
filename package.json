@@ -8,9 +8,9 @@
     "build:evm": "mkdir -p build && waffle waffle.json",
     "build:ovm": "mkdir -p build-ovm && DEBUG=info*,error*,warn* waffle waffle-ovm.json",
     "build": "yarn clean && yarn build:evm && yarn build:ovm && yarn get-types",
-    "test:evm": "yarn build:evm && MODE=EVM ts-mocha --timeout 10000",
-    "test:ovm": "yarn build:ovm && MODE=OVM DEBUG=info*,warn* ts-mocha --timeout 50000",
-    "the-kitchen-sink": "yarn clean && yarn test:evm && yarn test:ovm"
+    "test:evm": "TEST_MODE=EVM ts-mocha --timeout 10000 test/erc20.spec.ts",
+    "test:ovm": "TEST_MODE=OVM DEBUG=info*,warn* ts-mocha --timeout 50000 test/optimistic-erc20.spec.ts",
+    "all": "yarn build && yarn test:evm && yarn test:ovm"
   },
   "keywords": [
     "optimism",
