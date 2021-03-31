@@ -9,7 +9,7 @@
     "build:ovm": "mkdir -p build-ovm && DEBUG=info*,error*,warn* waffle waffle-ovm.json",
     "test:evm": "ts-mocha --timeout 10000 test/erc20.spec.ts",
     "test:ovm": "TEST_MODE=OVM DEBUG=info*,warn* ts-mocha --timeout 50000 test/optimistic-erc20.spec.ts",
-    "all": "yarn clean && yarn build:evm && yarn build:ovm && yarn test:evm && yarn test:ovm"
+    "all": "yarn clean && yarn build:evm && yarn build:ovm && yarn get-types yarn test:evm && yarn test:ovm"
   },
   "keywords": [
     "optimism",
