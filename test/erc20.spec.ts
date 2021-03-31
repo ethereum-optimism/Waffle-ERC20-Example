@@ -22,12 +22,19 @@ describe('ERC20', () => {
   const useL2: boolean = (process.env.TEST_MODE === 'OVM')
 
   if (useL2 == true) {
-    provider = new ethers.providers.JsonRpcProvider(process.env.L2_WEB3_URL)
+    provider = new ethers.providers.JsonRpcProvider(
+      process.env.OPTIMISTIC_ETHEREUM_JSON_RPC_PROVIDER
+    )
   } else {
-    provider = new ethers.providers.JsonRpcProvider(process.env.L1_WEB3_URL)
+    provider = new ethers.providers.JsonRpcProvider(
+      process.env.ETHEREUM_JSON_RPC_PROVIDER
+    )
   }
 
-  const wallet: Signer = new ethers.Wallet(process.env.USER_PRIVATE_KEY, provider)
+  const wallet: Signer = new ethers.Wallet(
+    process.env.USER_PRIVATE_KEY,
+    provider
+  )
   const walletTo: Signer = new ethers.Wallet(privateKey, provider)
 
   // parameters to use for our test coin
@@ -75,7 +82,6 @@ describe('ERC20', () => {
       expect(walletToBalance.toString()).to.equal('7')
     })
 
-    // Compare with how Synthetix tests event emissions
     it('should emit a Transfer event when transfer is called', async () => {
       const tx = ERC20.connect(wallet).transfer(walletToAddress, 7)
       await expect(tx)
