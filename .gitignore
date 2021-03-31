@@ -1,9 +1,7 @@
 # ------- Project specific -------
-test/optimistic-erc20.spec.ts
-optimism-integration
-deploy
-deployments
-types
+# test/optimistic-erc20.spec.ts
+# optimism-integration
+# types
 
 # Logs
 logs
