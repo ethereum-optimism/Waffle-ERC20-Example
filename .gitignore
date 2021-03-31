@@ -2,6 +2,7 @@
 # test/optimistic-erc20.spec.ts
 # optimism-integration
 # types
+# .env
 
 # Logs
 logs

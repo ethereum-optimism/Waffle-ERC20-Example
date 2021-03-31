@@ -70,7 +70,7 @@ So, let's get to deploying your simple ERC20 contract to the EVM!
 
 ### Deploying a contract
 
-To deploy a contract to Ethereum. 
+To deploy a contract to Ethereum, 
 
 ## Writing EVM-integration tests
 
