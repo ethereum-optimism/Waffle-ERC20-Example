@@ -52,7 +52,7 @@ If you can see this directory, you're ready to move onto the next section!
 ### Compile an Optimistic Ethereum contract
 
 Compiling a contract for Optimistic Ethereum is pretty easy!
-First we'll need to install the [`@eth-optimism/solc`](https://www.npmjs.com/package/@eth-optimism/solc) and `solc` packages.
+First we'll need to install the [`@eth-optimism/solc`](https://www.npmjs.com/package/@eth-optimism/solc) and [`solc`](https://www.npmjs.com/package/solc) packages.
 Since we currently only support `solc` versions `0.5.16`, `0.6.12`, and `0.7.6` for Optimistic Ethereum contracts, we'll be using version `0.7.6` in this example.
 Let's add these two packages:
 
@@ -90,7 +90,7 @@ Here, `build-ovm` signifies that the contracts contained in this directory have 
 
 ### Test an Ethereum contract
 
-Testing with Waffle is easy. We've included a simple set of ERC20 tests inside `Waffle-ERC20-Example/test/erc20.spec.js`. Let's run these tests with `waffle`:
+Testing with Waffle is easy. We've included a simple set of ERC20 tests inside [`Waffle-ERC20-Example/test/erc20.spec.js`](https://github.com/ethereum-optimism/Waffle-ERC20-Example/blob/main/test/erc20.test.js). Let's run these tests with `waffle`:
 
 ```sh
 yarn mocha 'test/*.spec.js' --timeout 10000
@@ -105,9 +105,9 @@ But first we'll need to get a local version of an Optimistic Ethereum node runni
 
 -------
 
-Fortunately, we have a handy dandy repository that makes it easy to spin up a local Optimistic Ethereum node!
+Fortunately, we have a [handy dandy repository](https://github.com/ethereum-optimism/optimism-integration) that makes it easy to spin up a local Optimistic Ethereum node!
 
-Since we're going to be using Docker, make sure that Docker is installed on your machine prior to moving on (info on how to do that here).
+Since we're going to be using Docker, make sure that Docker is installed on your machine prior to moving on (info on how to do that [here](https://docs.docker.com/engine/install/)).
 
 Now we just need to install our Optimistic Ethereum node by running:
 
