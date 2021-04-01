@@ -61,7 +61,8 @@ yarn add @eth-optimism/solc@0.7.6-alpha.1
 yarn add solc@0.7.6
 ```
 
-Next we just need to add a new Waffle config to compile our contracts. Create `waffle-ovm.json` and add this to it:
+Next we just need to add a new Waffle config to compile our contracts.
+Create `waffle-ovm.json` and add this to it:
 
 ```json
 {
@@ -92,10 +93,8 @@ Here, `build-ovm` signifies that the contracts contained in this directory have 
 Testing with Waffle is easy. We've included a simple set of ERC20 tests inside `Waffle-ERC20-Example/test/erc20.spec.js`. Let's run these tests with `waffle`:
 
 ```sh
-yarn TARGET=EVM mocha 'test/*.spec.js' --timeout 10000
+yarn mocha 'test/*.spec.js' --timeout 10000
 ```
-
-Notice that we're using a `TARGET=EVM` flag to let `mocha` know that we want to run this test for the EVM.
 
 If everything went well, you should see a bunch of green checkmarks.
 
