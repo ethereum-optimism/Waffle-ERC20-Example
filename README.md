@@ -1,8 +1,9 @@
-# Getting Started with the OVM: Simple ERC20 Token Waffle Tutorial
+# Getting Started with the Optimistic Ethereum: Simple ERC20 Token Waffle Tutorial
 
-Hi there! Welcome to our OVM ERC20 Waffle example!
+Hi there! Welcome to our Optimistic Ethereum ERC20 Waffle example!
 
-If your preferred smart contract testing framework is Truffle, see our OVM ERC20 Truffle tutorial here (todo).
+If your preferred smart contract testing framework is Truffle, see our Optimistic Ethereum ERC20 Truffle tutorial [here](https://github.com/ethereum-optimism/Truffle-ERC20-Example).
+
 If you're interested in writing your first L2-compatible smart contract using Waffle as your smart contract testing framework, then you've come to the right place!
 This repo serves as an example for how go through and compile/test/deploy your contracts on both Ethereum and Optimistic Ethereum.
 
@@ -17,7 +18,7 @@ Please make sure you've installed the following before continuing:
 - [Yarn 1](https://classic.yarnpkg.com/en/docs/install#mac-stable)
 - [Docker](https://docs.docker.com/engine/install/)
 
-## Set up
+## Setup
 
 To start, clone this `Waffle-ERC20-Example` repo, enter it, and install all of its dependencies:
 
@@ -35,21 +36,7 @@ cp .env-example .env
 
 This will give us our environment variables that we'll use later on.
 
-## Step 1: Compile your contracts
-
-### Compile an Ethereum contract
-
-Just like with any other project, we'll first need to compile our Solidity into EVM bytecode.
-Let's compile our ERC20 contract by running the following command:
-
-```sh
-yarn waffle waffle.json
-```
-
-You should now see a new `build-ovm` directory which has some JSON files in it.
-If you can see this directory, you're ready to move onto the next section!
-
-### Compile an Optimistic Ethereum contract
+## Step 1: Compile your contracts for Optimistic Ethereum
 
 Compiling a contract for Optimistic Ethereum is pretty easy!
 First we'll need to install the [`@eth-optimism/solc`](https://www.npmjs.com/package/@eth-optimism/solc) and [`solc`](https://www.npmjs.com/package/solc) packages.
@@ -86,9 +73,7 @@ Yep, it's that easy. You can verify that everything went well by looking for the
 
 Here, `build-ovm` signifies that the contracts contained in this directory have been compiled for the OVM, the Optimistic Virtual Machine, as opposed to the Ethereum Virtual Machine. Now let's move on to testing!
 
-## Step 2: Test your contracts
-
-### Test an Ethereum contract
+## Step 2: Testing your Optimistic Ethereum contracts
 
 Testing with Waffle is easy. We've included a simple set of ERC20 tests inside [`Waffle-ERC20-Example/test/erc20.spec.js`](https://github.com/ethereum-optimism/Waffle-ERC20-Example/blob/main/test/erc20.test.js). Let's run these tests with `waffle`:
 
@@ -140,10 +125,10 @@ To do that, run:
 yarn TARGET=OVM mocha 'test/*.spec.js' --timeout 50000
 ```
 
-Instead of using the `TARGET=EVM` flag, here we use the `TARGET=OVM` flag to let `mocha` know that we want to use the `build-ovm` folder as our path to our JSON files.
+Notice that we use the `TARGET=OVM` flag to let `mocha` know that we want to use the `build-ovm` folder as our path to our JSON files.
 (Remember that these JSON files were compiled using the Optimistic Ethereum solidity compiler!)
 
-You should see another set of passing tests. If so, congrats!
+You should see a set of passing tests for your ERC20 contract. If so, congrats!
 You're ready to deploy an application to Optimistic Ethereum.
 It really is that easy.
 
@@ -153,11 +138,12 @@ It really is that easy.
 
 ### OVM vs. EVM Incompatibilities
 
-Our goal is to bring the OVM as close to 100% compatibility with all existing Ethereum projects, but our software is still in an early stage. [This document](https://hackmd.io/elr0znYORiOMSTtfPJVAaA) will maintain the most up to date list of known incompatibilities between the OVM and EVM, along with our plans to fix them.
+Our goal is to bring the OVM as close to 100% compatibility with all existing Ethereum projects, but our software is still in an early stage. [Our community hub docs](https://community.optimism.io/docs/protocol/evm-comparison.html) will maintain the most up to date list of known incompatibilities between the OVM and EVM, along with our plans to fix them.
 
 ### Wasn't that easy?
 
-The OVM provides a fresh new take on layer 2 development: it's identical to layer 1 development.
+The OVM provides a fresh new take on layer 2 development: it's _mostly_ identical to layer 1 development.
+However, there are a few differences that are worth noting, which you can read more about in our [EVM comparison documentation](https://community.optimism.io/docs/protocol/evm-comparison.html).
 No hoops, no tricks--the Ethereum you know and love, ready to scale up with L2.
 For more info on our progress and what's going on behind the scenes, you can follow us on [Twitter](https://twitter.com/optimismPBC).
 
@@ -167,4 +153,4 @@ Want to try deploying contracts to the Optimistic Ethereum testnet next? [Check 
 
 ## Troubleshooting
 
-Example project not working? [Create a Github Issue](https://github.com/ethereum-optimism/ERC20-Example/issues), or hop in our [Discord](https://discordapp.com/invite/jrnFEvq) channel and ask away.
+Example project not working? [Create a Github Issue](https://github.com/ethereum-optimism/Truffle-ERC20-Example/issues), or hop in our [Discord](https://discordapp.com/invite/jrnFEvq) channel and ask away.
