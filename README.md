@@ -22,7 +22,7 @@ Please make sure you've installed the following before continuing:
 To start, clone this `Waffle-ERC20-Example` repo, enter it, and install all of its dependencies:
 
 ```sh
-git clone https://github.com/ethereum-optimism/ERC20-Example.git
+git clone https://github.com/ethereum-optimism/Waffle-ERC20-Example.git
 cd Waffle-ERC20-Example
 yarn install
 ```
