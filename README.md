@@ -28,14 +28,6 @@ cd Waffle-ERC20-Example
 yarn install
 ```
 
-Then, copy the `.env-example` file and rename it `.env`, like so:
-
-```sh
-cp .env-example .env
-```
-
-This will give us our environment variables that we'll use later on.
-
 ## Step 1: Compile your contracts for Optimistic Ethereum
 
 Compiling a contract for Optimistic Ethereum is pretty easy!
@@ -59,7 +51,7 @@ Create `waffle-ovm.json` and add this to it:
 }
 ```
 
-Here, we specify the new custom Optimistic Ethereum compiler we just installed and the new build path for our optimistically compiled contracts.
+Here, we specify the new custom Optimistic Ethereum compiler we just installed and the new build path for our compiled contracts.
 
 And we're ready to compile! All you have to do is specify the `waffle-ovm.json` config in your `waffle` command:
 
