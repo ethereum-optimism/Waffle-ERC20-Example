@@ -21,16 +21,15 @@ describe('ERC20 smart contract', () => {
   const useL2 = (process.env.TARGET === 'OVM')
 
   if (useL2 == true) {
-    provider = new ethers.providers.JsonRpcProvider(
-      process.env.OPTIMISTIC_ETHEREUM_JSON_RPC_PROVIDER
-    )
+    provider = new ethers.providers.JsonRpcProvider('http://0.0.0.0:8545')
   } else {
-    provider = new ethers.providers.JsonRpcProvider(
-      process.env.ETHEREUM_JSON_RPC_PROVIDER
-    )
+    provider = new ethers.providers.JsonRpcProvider('http://0.0.0.0:9545')
   }
 
-  wallet = new ethers.Wallet(process.env.USER_PRIVATE_KEY, provider)
+  wallet = new ethers.Wallet(
+    '0x754fde3f5e60ef2c7649061e06957c29017fe21032a8017132c0078e37f6193a',
+    provider
+  )
   walletTo = new ethers.Wallet(privateKey, provider)
 
   // parameters to use for our test coin

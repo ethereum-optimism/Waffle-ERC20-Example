@@ -5,9 +5,9 @@ Hi there! Welcome to our Optimistic Ethereum ERC20 Waffle example!
 If your preferred smart contract testing framework is Truffle, see our Optimistic Ethereum ERC20 Truffle tutorial [here](https://github.com/ethereum-optimism/Truffle-ERC20-Example).
 
 If you're interested in writing your first L2-compatible smart contract using Waffle as your smart contract testing framework, then you've come to the right place!
-This repo serves as an example for how go through and compile/test/deploy your contracts on both Ethereum and Optimistic Ethereum.
+This repo serves as an example for how go through and compile & test your contracts on both Ethereum and Optimistic Ethereum.
 
-Note that this process is only to give a side-by-side comparison and is _not_ necessary for you to build an application on Optimistic Ethereum. With that out of the way, let's begin!
+Let's begin!
 
 ## Prerequisites
 
