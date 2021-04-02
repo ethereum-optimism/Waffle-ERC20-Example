@@ -132,6 +132,10 @@ You should see a set of passing tests for your ERC20 contract. If so, congrats!
 You're ready to deploy an application to Optimistic Ethereum.
 It really is that easy.
 
+And uh... yeah. That's pretty much it.
+Tutorial complete.
+Hopefully now you know the basics of working with Optimistic Ethereum! 🅾️
+
 ------
 
 ## Further Reading
