@@ -14,10 +14,13 @@ describe('ERC20 smart contract', () => {
     provider,
     wallet,
     walletTo,
+    walletEmpty,
     walletAddress,
-    walletToAddress
+    walletToAddress,
+    walletEmptyAddress
 
   const privateKey = ethers.Wallet.createRandom().privateKey
+  const privateKeyEmpty = ethers.Wallet.createRandom().privateKey
   const useL2 = (process.env.TARGET === 'OVM')
 
   if (useL2 == true) {
@@ -31,6 +34,7 @@ describe('ERC20 smart contract', () => {
     provider
   )
   walletTo = new ethers.Wallet(privateKey, provider)
+  walletEmpty = new ethers.Wallet(privateKeyEmpty, provider)
 
   // parameters to use for our test coin
   const COIN_NAME = 'OVM Test Coin'
@@ -42,6 +46,7 @@ describe('ERC20 smart contract', () => {
     before(async () => {
       walletAddress = await wallet.getAddress()
       walletToAddress = await walletTo.getAddress()
+      walletEmptyAddress = await walletEmpty.getAddress()
 
       const Artifact__ERC20 = getArtifact(process.env.TARGET)
       const Factory__ERC20 = new ethers.ContractFactory(
@@ -88,17 +93,19 @@ describe('ERC20 smart contract', () => {
     })
 
     it('should not transfer above the amount', async () => {
-      await expect(ERC20.transfer(walletTo.address, 1007)).to.be.reverted
+      const walletToBalanceBefore = await ERC20.balanceOf(walletToAddress)
+      const tx = await ERC20.transfer(walletToAddress, 1007)
+      const walletToBalanceAfter = await ERC20.balanceOf(walletToAddress)
+      expect(walletToBalanceBefore).to.eq(walletToBalanceAfter)
     })
 
     it('should not transfer from empty account', async () => {
       if (useL2 == true) {
-        const walletToBalanceBefore = await ERC20.balanceOf(walletToAddress)
-        const ERC20FromOtherWallet = ERC20.connect(walletTo)
-        const tx = await ERC20FromOtherWallet.transfer(walletAddress, 1)
-        await tx.wait()
-        const walletToBalanceAfter = await ERC20.balanceOf(walletToAddress)
-        expect(walletToBalanceBefore).to.eq(walletToBalanceBefore)
+        const walletToBalanceBefore = await ERC20.balanceOf(walletEmptyAddress)
+        const ERC20FromOtherWallet = ERC20.connect(walletEmpty)
+        const tx = await ERC20FromOtherWallet.transfer(walletEmptyAddress, 1)
+        const walletToBalanceAfter = await ERC20.balanceOf(walletEmptyAddress)
+        expect(walletToBalanceBefore).to.eq(walletToBalanceAfter)
       } else {
         const ERC20FromOtherWallet = ERC20.connect(walletTo)
         const tx = ERC20FromOtherWallet.transfer(walletAddress, 1)
