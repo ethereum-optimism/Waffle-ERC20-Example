@@ -1,3 +1,6 @@
+waffle-ovm.json
+optimism-integration
+
 # Logs
 logs
 *.log
@@ -106,3 +109,4 @@ dist
 .DS_Store
 
 build/
+build-ovm/
