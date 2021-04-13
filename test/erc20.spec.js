@@ -19,7 +19,8 @@ describe('ERC20 smart contract', () => {
     walletToAddress,
     walletEmptyAddress
 
-  const privateKey = ethers.Wallet.createRandom().privateKey
+  const privateKey1 = ethers.Wallet.createRandom().privateKey
+  const privateKey2 = ethers.Wallet.createRandom().privateKey
   const privateKeyEmpty = ethers.Wallet.createRandom().privateKey
   const useL2 = (process.env.TARGET === 'OVM')
 
@@ -29,18 +30,14 @@ describe('ERC20 smart contract', () => {
     provider = new ethers.providers.JsonRpcProvider('http://0.0.0.0:9545')
   }
 
-  wallet = new ethers.Wallet(
-    '0x754fde3f5e60ef2c7649061e06957c29017fe21032a8017132c0078e37f6193a',
-    provider
-  )
-  walletTo = new ethers.Wallet(privateKey, provider)
+  wallet = new ethers.Wallet(privateKey1, provider)
+  walletTo = new ethers.Wallet(privateKey2, provider)
   walletEmpty = new ethers.Wallet(privateKeyEmpty, provider)
 
   // parameters to use for our test coin
   const COIN_NAME = 'OVM Test Coin'
   const TICKER = 'OVM'
   const NUM_DECIMALS = 1
-
 
   describe('when using a deployed contract instance', () => {
     before(async () => {
@@ -57,7 +54,9 @@ describe('ERC20 smart contract', () => {
 
       ERC20 = await Factory__ERC20
         .connect(wallet)
-        .deploy(1000, COIN_NAME, NUM_DECIMALS, TICKER)
+        .deploy(1000, COIN_NAME, NUM_DECIMALS, TICKER, {
+          gasPrice: 0
+        })
 
       ERC20.deployTransaction.wait()
     })
@@ -79,14 +78,18 @@ describe('ERC20 smart contract', () => {
 
 
     it('should transfer amount to destination account', async () => {
-      const tx = await ERC20.connect(wallet).transfer(walletToAddress, 7)
+      const tx = await ERC20.connect(wallet).transfer(walletToAddress, 7, {
+        gasPrice: 0
+      })
       await tx.wait()
       const walletToBalance = await ERC20.balanceOf(walletToAddress)
       expect(walletToBalance.toString()).to.equal('7')
     })
 
     it('should emit Transfer event', async () => {
-      const tx = ERC20.connect(wallet).transfer(walletToAddress, 7)
+      const tx = ERC20.connect(wallet).transfer(walletToAddress, 7, {
+        gasPrice: 0
+      })
       await expect(tx)
         .to.emit(ERC20, 'Transfer')
         .withArgs(walletAddress, walletToAddress, 7)
@@ -94,7 +97,9 @@ describe('ERC20 smart contract', () => {
 
     it('should not transfer above the amount', async () => {
       const walletToBalanceBefore = await ERC20.balanceOf(walletToAddress)
-      const tx = await ERC20.transfer(walletToAddress, 1007)
+      const tx = await ERC20.transfer(walletToAddress, 1007, {
+        gasPrice: 0
+      })
       const walletToBalanceAfter = await ERC20.balanceOf(walletToAddress)
       expect(walletToBalanceBefore).to.eq(walletToBalanceAfter)
     })
