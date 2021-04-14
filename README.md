@@ -67,10 +67,10 @@ Here, `build-ovm` signifies that the contracts contained in this directory have 
 
 ## Step 2: Testing your Optimistic Ethereum contracts
 
-Testing with Waffle is easy. We've included a simple set of ERC20 tests inside [`Waffle-ERC20-Example/test/erc20.spec.js`](https://github.com/ethereum-optimism/Waffle-ERC20-Example/blob/main/test/erc20.test.js). Let's run these tests with `waffle`:
+Testing with Waffle is easy. We've included a simple set of ERC20 tests inside [`Waffle-ERC20-Example/test/erc20.test.js`](https://github.com/ethereum-optimism/Waffle-ERC20-Example/blob/main/test/erc20.test.js). Let's run these tests with `waffle`:
 
 ```sh
-yarn mocha 'test/*.spec.js' --timeout 10000
+yarn mocha 'test/*.test.js' --timeout 10000
 ```
 
 If everything went well, you should see a bunch of green checkmarks.
@@ -114,7 +114,7 @@ With your local instance of Optimistic Ethereum up and running, let's test your 
 To do that, run:
 
 ```sh
-yarn TARGET=OVM mocha 'test/*.spec.js' --timeout 50000
+yarn TARGET=OVM mocha 'test/*.test.js' --timeout 50000
 ```
 
 Notice that we use the `TARGET=OVM` flag to let `mocha` know that we want to use the `build-ovm` folder as our path to our JSON files.

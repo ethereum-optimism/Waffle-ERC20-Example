@@ -25,7 +25,6 @@
   },
   "devDependencies": {
     "chai": "^4.3.4",
-    "dotenv": "^8.2.0",
     "ethereum-waffle": "^3.0.0",
     "mocha": "^7.0.1",
     "rimraf": "^2.6.3"
