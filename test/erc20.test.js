@@ -53,7 +53,9 @@ describe('ERC20 smart contract', () => {
 
       ERC20 = await Factory__ERC20
         .connect(wallet)
-        .deploy(1000, COIN_NAME, NUM_DECIMALS, TICKER)
+        .deploy(1000, COIN_NAME, NUM_DECIMALS, TICKER, {
+          gasPrice: 0
+        })
 
       ERC20.deployTransaction.wait()
     })
@@ -75,14 +77,18 @@ describe('ERC20 smart contract', () => {
 
 
     it('should transfer amount to destination account', async () => {
-      const tx = await ERC20.connect(wallet).transfer(walletToAddress, 7)
+      const tx = await ERC20.connect(wallet).transfer(walletToAddress, 7, {
+        gasPrice: 0
+      })
       await tx.wait()
       const walletToBalance = await ERC20.balanceOf(walletToAddress)
       expect(walletToBalance.toString()).to.equal('7')
     })
 
     it('should emit Transfer event', async () => {
-      const tx = ERC20.connect(wallet).transfer(walletToAddress, 7)
+      const tx = ERC20.connect(wallet).transfer(walletToAddress, 7, {
+        gasPrice: 0
+      })
       await expect(tx)
         .to.emit(ERC20, 'Transfer')
         .withArgs(walletAddress, walletToAddress, 7)
@@ -91,7 +97,9 @@ describe('ERC20 smart contract', () => {
     // Setting `gasPrice` to 0 causes the transfer txns to fail.
     it('should not transfer above the amount', async () => {
       const walletToBalanceBefore = await ERC20.balanceOf(walletToAddress)
-      const tx = await ERC20.transfer(walletToAddress, 1007)
+      const tx = await ERC20.transfer(walletToAddress, 1007, {
+        gasPrice: 0
+      })
       const walletToBalanceAfter = await ERC20.balanceOf(walletToAddress)
       expect(walletToBalanceBefore).to.eq(walletToBalanceAfter)
     })
@@ -101,12 +109,16 @@ describe('ERC20 smart contract', () => {
       if (useL2 == true) {
         const walletToBalanceBefore = await ERC20.balanceOf(walletEmptyAddress)
         const ERC20FromOtherWallet = ERC20.connect(walletEmpty)
-        const tx = await ERC20FromOtherWallet.transfer(walletEmptyAddress, 1)
+        const tx = await ERC20FromOtherWallet.transfer(walletEmptyAddress, 1, {
+          gasPrice: 0
+        })
         const walletToBalanceAfter = await ERC20.balanceOf(walletEmptyAddress)
         expect(walletToBalanceBefore).to.eq(walletToBalanceAfter)
       } else {
         const ERC20FromOtherWallet = ERC20.connect(walletTo)
-        const tx = ERC20FromOtherWallet.transfer(walletAddress, 1)
+        const tx = ERC20FromOtherWallet.transfer(walletAddress, 1, {
+          gasPrice: 0
+        })
         await expect(tx).to.be.reverted
       }
     })
