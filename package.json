@@ -3,7 +3,7 @@
   "version": "0.0.1-alpha.1",
   "description": "Basic example of how to test a basic token contract with Waffle in the OVM",
   "scripts": {
-    "clean": "rimraf build"
+    "clean": "rimraf build build-ovm"
   },
   "keywords": [
     "optimism",
